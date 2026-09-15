@@ -144,7 +144,7 @@
 
         .services-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
             gap: 25px; 
             margin-top: 20px; 
         }
@@ -154,17 +154,36 @@
             padding: 30px; 
             border-radius: 20px; 
             border: 2px solid rgba(255, 20, 147, 0.08);
-            transition: transform 0.3s, box-shadow 0.3s;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 200px;
+            box-sizing: border-box;
         }
 
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(255, 20, 147, 0.15);
-            border-color: var(--primary);
+        .service-card h3 { color: var(--text-main); font-size: 1.4em; margin-top: 0; margin-bottom: 10px; }
+        .service-card p { font-size: 0.95em; color: #444; margin: 0; flex-grow: 1; }
+
+        .portfolio-btn {
+            background: var(--primary); 
+            color: white; 
+            padding: 10px 15px; 
+            border-radius: 50px; 
+            font-weight: bold; 
+            text-decoration: none; 
+            font-size: 0.9em; 
+            display: inline-block; 
+            margin-top: 15px;
+            transition: transform 0.2s, background 0.2s;
+            border: none;
+            cursor: pointer;
         }
 
-        .service-card h3 { color: var(--text-main); font-size: 1.4em; }
+        .portfolio-btn:hover {
+            transform: scale(1.03);
+            filter: brightness(1.1);
+        }
 
         .cta-container { text-align: center; margin-top: 20px; }
 
@@ -233,15 +252,15 @@
             <div id="servicios" class="section">
                 <h2>Mis Servicios Premium</h2>
                 <div class="services-grid">
-                    <div class="service-card">
+                    <div class="service-card" style="min-height: auto;">
                         <h3>Social Media Styling</h3>
                         <p>Diseño de identidad visual para redes, feeds armónicos e impactantes y plantillas personalizadas alineadas a los objetivos de tu negocio.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card" style="min-height: auto;">
                         <h3>Creación de Contenido</h3>
                         <p>Producción avanzada de Reels, TikToks y videos de alta retención diseñados para captar la atención de tu cliente ideal.</p>
                     </div>
-                    <div class="service-card">
+                    <div class="service-card" style="min-height: auto;">
                         <h3>Estrategia Digital</h3>
                         <p>Planificación de calendarios eficaces, análisis de competencia y copys persuasivos enfocados en generar ventas.</p>
                     </div>
@@ -253,9 +272,5 @@
                 <p style="text-align: center; margin-bottom: 35px; font-size: 1.1em;">Haz clic en cada tarjeta para reproducir directamente los Reels de alta retención que he producido y editado:</p>
                 
                 <div class="services-grid">
-                    <div class="service-card" style="border-top: 4px solid var(--primary); display: flex; flex-direction: column; justify-content: space-between; height: 220px;">
-                        <div>
-                            <h3 style="margin-bottom: 5px; font-size: 1.3em;">Ginhoa Boutique</h3>
-                            <p style="font-size: 0.9em; color: #555; margin: 0;">Producción audiovisual de moda, transiciones dinámicas y enfoque estético para catálogo en tendencias.</p>
-                        </div>
-                        <a href="https://instagram.com" target="_blank" style="background: var(--primary); color: white; padding: 10px 15px; border-radius: 50px; font-weight: bold; text-decoration: none; font-size: 0.9em; display: inline-block; margin-top: 15px;">Ver Reel Producido →</a>
+                    <!-- Ginhoa Boutique -->
+                    <div class="service-card" style="border-top: 4px solid var(--primary);">
