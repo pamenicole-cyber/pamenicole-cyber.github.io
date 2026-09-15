@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pamela | Marketing Digital & Creación de Contenido</title>
+    <title>Pamela | Marketing Digital</title>
     <style>
         :root {
             --bg-color: #ffffff;
             --primary: #FF1493; 
-            --secondary: #DDA0DD; 
             --accent: #8A2BE2; 
             --text-main: #1A1A1A;
             --card-bg: #FFF5FA;
         }
 
         body { 
-            font-family: 'Segoe UI', Roboto, sans-serif; 
+            font-family: 'Segoe UI', Arial, sans-serif; 
             margin: 0; 
             padding: 0; 
             background-color: var(--bg-color); 
             color: var(--text-main); 
-            line-height: 1.6;
             position: relative;
             overflow-x: hidden;
         }
 
+        /* FONDO ANIMADO */
         #canvas-stars {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: 9999; 
+            width: 100%;
+            height: 100%;
+            z-index: 1; 
             pointer-events: none;
         }
 
@@ -42,7 +41,6 @@
 
         nav {
             background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             display: flex;
@@ -53,153 +51,78 @@
             z-index: 1000;
         }
 
-        nav .logo {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: var(--text-main);
-            letter-spacing: 1px;
-        }
-
+        nav .logo { font-size: 1.5em; font-weight: bold; }
         nav .logo span { color: var(--primary); }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--text-main);
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-
-        nav ul li a:hover { color: var(--primary); }
+        nav ul { list-style: none; display: flex; gap: 30px; margin: 0; padding: 0; }
+        nav ul li a { text-decoration: none; color: var(--text-main); font-weight: 600; }
 
         header { 
             background: linear-gradient(135deg, #FFF0F6 0%, #FFE3F0 100%);
             text-align: center; 
-            padding: 120px 20px; 
-            border-bottom: 3px solid rgba(255, 20, 147, 0.1);
+            padding: 80px 20px; 
         }
 
-        header h1 { 
-            margin: 0; 
-            font-size: 3.5em; 
-            color: var(--text-main);
-            font-weight: 800;
-        }
+        header h1 { margin: 0; font-size: 3em; }
+        header p { font-size: 1.3em; color: var(--primary); margin-top: 10px; font-weight: 600; }
 
-        header p { 
-            font-size: 1.4em; 
-            color: var(--primary);
-            margin-top: 15px;
-            font-weight: 600;
-        }
-
-        .container { max-width: 1000px; margin: 50px auto; padding: 0 20px; }
+        .container { max-width: 1000px; margin: 40px auto; padding: 0 20px; }
 
         .section { 
-            background: #ffffff; 
-            padding: 40px; 
-            margin-bottom: 40px; 
-            border-radius: 24px; 
-            box-shadow: 0 15px 35px rgba(255, 20, 147, 0.08); 
-            border: 1px solid rgba(255, 20, 147, 0.05);
-        }
-
-        h2 { 
-            color: var(--text-main); 
-            font-size: 2.2em;
+            background: rgba(255, 255, 255, 0.9); 
+            padding: 35px; 
+            margin-bottom: 30px; 
+            border-radius: 20px; 
+            box-shadow: 0 10px 30px rgba(255, 20, 147, 0.05); 
             text-align: center;
-            margin-bottom: 35px;
-            font-weight: 700;
-        }
-
-        h2::after {
-            content: '';
-            display: block;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            margin: 8px auto 0 auto;
-            border-radius: 4px;
         }
 
         .exp-card {
             background: var(--card-bg); 
-            padding: 25px; 
-            border-radius: 16px; 
-            margin-bottom: 20px; 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 15px; 
             border-left: 5px solid var(--primary);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
             text-align: left;
         }
 
-        .exp-card h4 { margin: 0; color: var(--primary); font-size: 1.3em; }
-        .exp-card .company { margin: 5px 0; font-weight: bold; color: var(--text-main); font-size: 1.1em; }
+        .exp-card h4 { margin: 0; color: var(--primary); }
+        .exp-card .company { margin: 5px 0; font-weight: bold; }
 
+        /* REJILLA DE TARJETAS FORZADA */
         .services-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
-            gap: 25px; 
+            display: block; 
             margin-top: 20px; 
         }
 
         .service-card { 
             background: #ffffff; 
-            padding: 30px; 
-            border-radius: 20px; 
-            border: 2px solid rgba(255, 20, 147, 0.08);
+            padding: 25px; 
+            border-radius: 15px; 
+            border: 2px solid rgba(255, 20, 147, 0.1);
+            margin-bottom: 20px;
             text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 220px;
-            box-sizing: border-box;
         }
 
-        .service-card h3 { color: var(--text-main); font-size: 1.4em; margin-top: 0; margin-bottom: 10px; }
-        .service-card p { font-size: 0.95em; color: #444; margin: 0; flex-grow: 1; }
-
         .portfolio-btn {
+            display: inline-block;
             background: var(--primary); 
             color: white; 
-            padding: 10px 15px; 
+            padding: 12px 25px; 
             border-radius: 50px; 
             font-weight: bold; 
             text-decoration: none; 
-            font-size: 0.9em; 
-            display: inline-block; 
             margin-top: 15px;
-            transition: transform 0.2s;
         }
-
-        .portfolio-btn:hover {
-            transform: scale(1.05);
-        }
-
-        .cta-container { text-align: center; margin-top: 20px; }
 
         .cta-btn { 
             display: inline-block; 
             background: linear-gradient(135deg, var(--primary), var(--accent)); 
             color: white; 
-            padding: 16px 40px; 
+            padding: 15px 35px; 
             text-decoration: none; 
             border-radius: 50px; 
             font-weight: bold; 
-            font-size: 1.1em;
-            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.35);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .cta-btn:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.5);
+            box-shadow: 0 5px 15px rgba(255, 20, 147, 0.3);
         }
     </style>
 </head>
@@ -212,7 +135,6 @@
             <div class="logo">Pamela<span>.Marketing</span></div>
             <ul>
                 <li><a href="#sobre-mi">Sobre Mí</a></li>
-                <li><a href="#servicios">Servicios</a></li>
                 <li><a href="#portafolio">Portafolio</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
@@ -227,48 +149,104 @@
             
             <div id="sobre-mi" class="section">
                 <h2>Sobre Mí & Experiencia</h2>
-                <p style="text-align: center; font-size: 1.2em; max-width: 750px; margin: 0 auto 40px auto; font-weight: 500;">
-                    Ayudo a marcas y negocios modernos a construir una presencia digital de alto impacto. Diseño narrativas visuales estéticas que enamoran, conectan y convierten audiencias en clientes reales.
+                <p style="font-size: 1.1em; max-width: 700px; margin: 0 auto 30px auto;">
+                    Ayudo a marcas y negocios modernos a construir una presencia digital de alto impacto. Diseño narrativas visuales estéticas que enamoran y conectan.
                 </p>
 
-                <div style="margin-top: 30px;">
-                    <div class="exp-card">
-                        <h4>Creadora de Contenido y Estratega Visual</h4>
-                        <p class="company">Ginhoa Boutique | La Torre 1010 <span style="font-weight: normal; font-size: 0.9em; color: var(--accent); margin-left: 10px;">(Actualidad)</span></p>
-                        <p style="margin: 8px 0 0 0;">Lidero la generación de contenido audiovisual enfocado en tendencias, moda y posicionamiento orgánico para potenciar los canales digitales de ambas marcas.</p>
-                    </div>
-
-                    <div class="exp-card" style="border-left-color: var(--accent);">
-                        <h4>Especialista en Contenido Audiovisual</h4>
-                        <p class="company">Coco Bambú & Coco Bambú Kids <span style="font-weight: normal; font-size: 0.9em; color: #666; margin-left: 10px;">(3 años de experiencia)</span></p>
-                        <p style="margin: 8px 0 0 0;">Gestioné de forma integral la producción de videos, sesiones fotográficas de producto y la planificación estratégica de parrillas de contenido para conectar de manera efectiva con el público objetivo.</p>
-                    </div>
+                <div class="exp-card">
+                    <h4>Creadora de Contenido y Estratega Visual</h4>
+                    <p class="company">Ginhoa Boutique | La Torre 1010 (Actualidad)</p>
+                    <p style="margin: 5px 0 0 0;">Lidero la generación de contenido audiovisual enfocado en tendencias, moda y posicionamiento orgánico.</p>
                 </div>
-            </div>
 
-            <div id="servicios" class="section">
-                <h2>Mis Servicios Premium</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <h3>Social Media Styling</h3>
-                        <p>Diseño de identidad visual para redes, feeds armónicos e impactantes y plantillas personalizadas alineadas a los objetivos de tu negocio.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Creación de Contenido</h3>
-                        <p>Producción avanzada de Reels, TikToks y videos de alta retención diseñados para captar la atención de tu cliente ideal.</p>
-                    </div>
-                    <div class="service-card">
-                        <h3>Estrategia Digital</h3>
-                        <p>Planificación de calendarios eficaces, análisis de competencia y copys persuasivos enfocados en generar ventas.</p>
-                    </div>
+                <div class="exp-card" style="border-left-color: var(--accent);">
+                    <h4>Especialista en Contenido Audiovisual</h4>
+                    <p class="company">Coco Bambú & Coco Bambú Kids (3 años de experiencia)</p>
+                    <p style="margin: 5px 0 0 0;">Gestioné de forma integral la producción de videos, sesiones fotográficas de producto y la planificación estratégica.</p>
                 </div>
             </div>
 
             <div id="portafolio" class="section">
                 <h2>Portafolio de Contenido Creado</h2>
-                <p style="text-align: center; margin-bottom: 35px; font-size: 1.1em;">Haz clic en cada tarjeta para reproducir directamente los Reels de alta retención que he producido y editado:</p>
+                <p style="margin-bottom: 25px;">Haz clic en cada botón para reproducir directamente los Reels que he producido:</p>
                 
                 <div class="services-grid">
+                    <!-- Ginhoa -->
                     <div class="service-card" style="border-top: 4px solid var(--primary);">
                         <h3>Ginhoa Boutique</h3>
-                        <p>Producción audiovisual de moda, transiciones dinámicas y enfoque estético para catálogo en tendencias.</p>
+                        <p>Producción audiovisual de moda, transiciones dinámicas y enfoque estético.</p>
+                        <a href="https://instagram.com" target="_blank" class="portfolio-btn">Ver Reel Producido →</a>
+                    </div>
+
+                    <!-- La Torre -->
+                    <div class="service-card" style="border-top: 4px solid var(--accent);">
+                        <h3>La Torre 1010</h3>
+                        <p>Estrategia digital y videos de alta retención orientados a conectar con la comunidad.</p>
+                        <a href="https://instagram.com" target="_blank" class="portfolio-btn" style="background: var(--accent);">Ver Reel Producido →</a>
+                    </div>
+
+                    <!-- Coco Bambú -->
+                    <div class="service-card" style="border-top: 4px solid var(--primary);">
+                        <h3>Coco Bambú</h3>
+                        <p>Creación de contenido orgánico y branding visual comercial desarrollado por 3 años.</p>
+                        <a href="https://instagram.com" target="_blank" class="portfolio-btn">Ver Reel Producido →</a>
+                    </div>
+
+                    <!-- Kids -->
+                    <div class="service-card" style="border-top: 4px solid var(--primary);">
+                        <h3>Coco Bambú Kids</h3>
+                        <p>Edición dinámica y dirección creativa enfocada en el sector infantil y familiar.</p>
+                        <a href="https://instagram.com" target="_blank" class="portfolio-btn">Ver Reel Producido →</a>
+                    </div>
+                </div>
+            </div>
+
+            <div id="contacto" class="section">
+                <h2>¿Impulsamos tu Marca?</h2>
+                <p style="margin-bottom: 20px;">Escríbeme hoy mismo para armar una estrategia a la medida de tu negocio.</p>
+                <a href="https://wa.me" class="cta-btn" target="_blank">Agendar Asesoría por WhatsApp</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas-stars');
+        const ctx = canvas.getContext('2d');
+        let stars = [];
+
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+
+        for (let i = 0; i < 30; i++) {
+            stars.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                size: Math.random() * 3 + 2,
+                speed: Math.random() * 0.5 + 0.3
+            });
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = 'rgba(255, 20, 147, 0.4)';
+            
+            for (let i = 0; i < stars.length; i++) {
+                let s = stars[i];
+                s.y -= s.speed;
+                if (s.y < 0) s.y = canvas.height;
+                
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+            requestAnimationFrame(animate);
+        }
+        animate();
+    </script>
+</body>
+</html>
