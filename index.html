@@ -23,14 +23,13 @@
             overflow-x: hidden;
         }
 
-        /* FONDO ANIMADO */
         #canvas-stars {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1; 
+            z-index: 9999; 
             pointer-events: none;
         }
 
@@ -88,7 +87,6 @@
         .exp-card h4 { margin: 0; color: var(--primary); }
         .exp-card .company { margin: 5px 0; font-weight: bold; }
 
-        /* REJILLA DE TARJETAS FORZADA */
         .services-grid { 
             display: block; 
             margin-top: 20px; 
@@ -175,28 +173,28 @@
                     <div class="service-card" style="border-top: 4px solid var(--primary);">
                         <h3>Ginhoa Boutique</h3>
                         <p>Producción audiovisual de moda, transiciones dinámicas y enfoque estético.</p>
-                        <a href="https://instagram.com" target="_blank" class="portfolio-btn">Ver Reel Producido →</a>
+                        <a href="https://www.instagram.com/reel/DdAKC_-P_Cj/?stkn=MTVsMmZ1ZWxucGh6Mg==" target="_blank" class="portfolio-btn">Ver Reel Producido →</a>
                     </div>
 
                     <!-- La Torre -->
                     <div class="service-card" style="border-top: 4px solid var(--accent);">
                         <h3>La Torre 1010</h3>
                         <p>Estrategia digital y videos de alta retención orientados a conectar con la comunidad.</p>
-                        <a href="https://instagram.com" target="_blank" class="portfolio-btn" style="background: var(--accent);">Ver Reel Producido →</a>
+                        <a href="https://www.instagram.com/reel/DdKdjYNx2DA/?stkn=MXh0dXhuYWt0aWJ3aw==" target="_blank" class="portfolio-btn" style="background: var(--accent);">Ver Reel Producido →</a>
                     </div>
 
                     <!-- Coco Bambú -->
                     <div class="service-card" style="border-top: 4px solid var(--primary);">
                         <h3>Coco Bambú</h3>
                         <p>Creación de contenido orgánico y branding visual comercial desarrollado por 3 años.</p>
-                        <a href="https://instagram.com" target="_blank" class="portfolio-btn">Ver Reel Producido →</a>
+                        <a href="https://www.instagram.com/reel/DbecCIPANFy/?stkn=MTMxc2I2aTZlbDNpNQ==" target="_blank" class="portfolio-btn">Ver Reel Producido →</a>
                     </div>
 
                     <!-- Kids -->
                     <div class="service-card" style="border-top: 4px solid var(--primary);">
                         <h3>Coco Bambú Kids</h3>
                         <p>Edición dinámica y dirección creativa enfocada en el sector infantil y familiar.</p>
-                        <a href="https://instagram.com" target="_blank" class="portfolio-btn">Ver Reel Producido →</a>
+                        <a href="https://www.instagram.com/reel/DZqLPSbR1Qc/?stkn=MTd2aG14ZmxqZm54dw==" target="_blank" class="portfolio-btn">Ver Reel Producido →</a>
                     </div>
                 </div>
             </div>
@@ -222,18 +220,18 @@
         window.addEventListener('resize', resize);
         resize();
 
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 35; i++) {
             stars.push({
                 x: Math.random() * window.innerWidth,
                 y: Math.random() * window.innerHeight,
-                size: Math.random() * 3 + 2,
-                speed: Math.random() * 0.5 + 0.3
+                size: Math.random() * 4 + 2,
+                speed: Math.random() * 0.6 + 0.3
             });
         }
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = 'rgba(255, 20, 147, 0.4)';
+            ctx.fillStyle = 'rgba(255, 20, 147, 0.5)';
             
             for (let i = 0; i < stars.length; i++) {
                 let s = stars[i];
